@@ -122,6 +122,7 @@
   "logs.audit-log-experiment-updated.text": "successfully updated",
   "logs.audit-log-experiment-deleted.text": "successfully deleted",
   "logs.audit-log-experiment-state-changed.text": "successfully changed status from {{ previousState }} to {{ newState }} in ",
+  "logs.audit-log-experiment-schedule-state-changed.text": "successfully changed status from {{ previousState }} to {{ newState }} on {{ scheduleDate }} in",
   "users-global.text": "User",
   "users.main-heading.text": "Users",
   "users.sub-heading.text": "Use this page to track experiment users and preview users",

@@ -35,6 +35,8 @@
         </span>
 
         <ng-container [ngSwitch]="log.type">
+
+          <!-- For experiment delete log -->
           <div *ngSwitchCase="ExperimentLogType.EXPERIMENT_DELETED" class="log-text">
             <span class="action action-msg">
               {{ (log.type | experimentActionMessage | translate) + ' ' + log.data.experimentName }}
@@ -42,23 +44,13 @@
             <span class="log-time">{{ log.createdAt | date: 'shortTime' }}</span>
           </div>
 
+          <!-- For experiment creation log -->
           <div
             class="log-text"
-            *ngSwitchCase="
-              log.type === ExperimentLogType.EXPERIMENT_STATE_CHANGED ||
-              log.type === ExperimentLogType.EXPERIMENT_CREATED
-                ? log.type
-                : ''
-            "
+            *ngSwitchCase="ExperimentLogType.EXPERIMENT_CREATED"
           >
             <span class="action action-msg">
-              {{
-                (log.type
-                  | experimentActionMessage
-                  | translate
-                    : { previousState: log.data.previousState | titlecase, newState: log.data.newState | titlecase }) +
-                  ' '
-              }}
+              {{ (log.type | experimentActionMessage | translate ) + ' ' }}
               <a
                 class="link"
                 *ngIf="log.data.isExperimentExist; else experimentNotExist"
@@ -69,6 +61,41 @@
             <span class="log-time">{{ log.createdAt | date: 'shortTime' }}</span>
           </div>
 
+          <!-- For experiment state changed log -->
+          <div
+            class="log-text"
+            *ngSwitchCase="ExperimentLogType.EXPERIMENT_STATE_CHANGED"
+          >
+            <span class="action action-msg">
+              <span *ngIf="log.data?.startOn; else stateViewTemplate">
+                {{
+                  ( 'logs.audit-log-experiment-schedule-state-changed.text' | translate
+                      : { previousState: log.data.previousState | titlecase, newState: log.data.newState | titlecase, scheduleDate: (log.data.startOn | date: 'medium') }) +
+                    ' '
+                }}
+              </span>
+              <ng-template #stateViewTemplate>
+                <span>
+                  {{
+                    (log.type
+                      | experimentActionMessage
+                      | translate
+                        : { previousState: log.data.previousState | titlecase, newState: log.data.newState | titlecase }) +
+                      ' '
+                  }}
+                </span>
+              </ng-template>
+              <a
+                class="link"
+                *ngIf="log.data.isExperimentExist; else experimentNotExist"
+                [routerLink]="['/home', 'detail', log.data.experimentId]"
+                >{{ log.data.experimentName }}</a
+              >
+            </span>
+            <span class="log-time">{{ log.createdAt | date: 'shortTime' }}</span>
+          </div>
+
+          <!-- For experiment update log -->
           <div class="log-text" *ngSwitchCase="ExperimentLogType.EXPERIMENT_UPDATED">
             <mat-accordion class="accordion">
               <mat-expansion-panel hideToggle="true">
