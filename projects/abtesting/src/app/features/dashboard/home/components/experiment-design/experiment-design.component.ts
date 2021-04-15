@@ -199,7 +199,11 @@ export class ExperimentDesignComponent implements OnInit, OnChanges, OnDestroy {
     const conditionCodes = conditions.map(condition => condition.conditionCode);
     if (conditionCodes.length !== new Set(conditionCodes).size) {
       this.conditionCodeError = 'Condition should be unique'
-    } else {
+    } 
+    else if (conditions.length !== 2){
+      this.conditionCodeError = 'Please have atleast 2 conditions to moving forward'
+    }
+    else {
       this.conditionCodeError = null;
     }
   }

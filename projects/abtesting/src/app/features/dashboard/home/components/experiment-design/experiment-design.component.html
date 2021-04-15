@@ -93,7 +93,7 @@
           [formGroupName]="groupIndex"
         >
           <mat-icon
-            *ngIf="condition.length > 2"
+            *ngIf="condition.length >= 0"
             class="remove-icon"
             (click)="removeConditionOrPartition('condition', groupIndex)"
           >
@@ -199,7 +199,7 @@
           [formGroupName]="groupIndex"
         >
           <mat-icon
-          *ngIf="partition.length > 1"
+          *ngIf="partition.length >= 0"
             class="remove-icon"
             (click)="removeConditionOrPartition('partition', groupIndex)"
           >
