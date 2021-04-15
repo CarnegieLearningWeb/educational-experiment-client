@@ -264,7 +264,6 @@ export class ExperimentDesignComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-
   get condition(): FormArray {
     return this.experimentDesignForm.get('conditions') as FormArray;
   }
@@ -285,7 +284,6 @@ export class ExperimentDesignComponent implements OnInit, OnChanges, OnDestroy {
     }
     return false;
   }
-
 
   ngOnDestroy() {
     this.allPartitionsSub.unsubscribe();
