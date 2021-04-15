@@ -201,7 +201,7 @@ export class ExperimentDesignComponent implements OnInit, OnChanges, OnDestroy {
       this.conditionCodeError = 'Condition should be unique'
     } 
     else if (conditions.length !== 2){
-      this.conditionCodeError = 'Please have atleast 2 conditions to moving forward'
+      this.conditionCodeError = 'Please have atleast 2 conditions to move forward'
     }
     else {
       this.conditionCodeError = null;
