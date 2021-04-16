@@ -12,6 +12,7 @@ export class ExperimentFormValidators {
     if (conditions.length < 2) {
       return { conditionCountError: true };
     } else if (conditions.length >= 2) {
+      // handling sum of decimal values for assignment weights:
       let sumOfAssignmentWeights = 0.0;
       conditions.forEach(condition => (sumOfAssignmentWeights += parseFloat(condition.assignmentWeight)));
       return Math.ceil(sumOfAssignmentWeights) !== 100.0 ? { assignmentWightsSumError: true } : null;
