@@ -128,20 +128,21 @@
       + {{ 'home.new-experiment.design.add-condition.text' | translate }}
     </button>
   </ng-container>
-
+  
   <!-- apply equal condition weights -->
   <mat-card>
     <mat-card-content>
       <section>
         <mat-checkbox
-            class="ft-14-500 equal-weight-checkbox"
+            class="ft-14-700"
+            color="primary"
             (change)="applyEqualWeight($event)">
             {{ 'home.new-experiment.design.equal-assignment-weights.text' | translate }}
         </mat-checkbox>
       </section>
     </mat-card-content>
   </mat-card>
-  
+
   <!-- Partition Table -->
   <ng-container>
     <mat-table
