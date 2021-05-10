@@ -95,6 +95,7 @@
   "home.new-experiment.design.partition-id.placeholder.text": "ID",
   "home.new-experiment.design.add-experiment-partition.text": "Add Experiment Site",
   "home.new-experiment.design.assignment-weight-validation.text": "Assignment weights' sum must be 100",
+  "home.new-experiment.design.equal-assignment-weights.text": "Equal Weight Assignment",
   "home.new-experiment.design.assignment-partition-error-1.text": " partition data is already exist",
   "home.new-experiment.design.assignment-partition-error-2.text": " partition data are already exist",
   "home.new-experiment.design.assignment-partition-error-3.text": " partition data is duplicate",
